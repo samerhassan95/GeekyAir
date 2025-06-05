@@ -1,7 +1,12 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database"); // adjust path
+const sequelize = require("../config/database");
 
 const Item = sequelize.define("Item", {
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
