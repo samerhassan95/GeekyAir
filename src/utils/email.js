@@ -17,6 +17,9 @@ const sendEmail = async (to, subject, html) => {
     subject,
     html,
   });
+  console.log("📧 Sending email to:", to);
+  console.log("📝 Subject:", subject);
+  console.log("📨 Content:\n", html);
 };
 
 module.exports = sendEmail;
