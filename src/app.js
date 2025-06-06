@@ -25,6 +25,8 @@ app.get("/", (req, res) => {
   res.send("Items & Orders API Running");
 });
 
+app.use("/api/users", require("./routes/user"));
+
 // Mount
 app.use("/api/orders", orderRoutes);
 app.use("/api/auth", authRoutes);

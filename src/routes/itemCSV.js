@@ -14,14 +14,14 @@ const {
 router.post(
   "/import-csv",
   authenticate,
-  authorizeRoles(["super_admin", "manager"]),
+  authorizeRoles("super_admin", "manager"),
   upload.single("file"),
   importItemsCSV
 );
 router.get(
   "/export-csv",
   authenticate,
-  authorizeRoles(["super_admin", "manager"]),
+  authorizeRoles("super_admin", "manager"),
   exportItemsCSV
 );
 

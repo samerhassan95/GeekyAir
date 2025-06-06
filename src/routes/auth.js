@@ -7,13 +7,17 @@ const sendEmail = require("../utils/email");
 const crypto = require("crypto");
 const { Op } = require("sequelize");
 
+
 // Register
 router.post("/register", async (req, res) => {
-  const { email, password, role } = req.body;
+  const { name, email, password } = req.body;
+  const user = await User.create({ name, email, password });
 
   try {
-    if (!email || !password)
-      return res.status(400).json({ error: "Email and password required" });
+    if (!email || !password || !name)
+      return res
+        .status(400)
+        .json({ error: "Email ,Name and password required" });
 
     // Check if user exists
     const existing = await User.findOne({ where: { email } });
@@ -28,6 +32,7 @@ router.post("/register", async (req, res) => {
     // Create user
     const user = await User.create({
       email,
+      name,
       password: hashedPassword,
       role: role || "waiter",
       verificationToken,

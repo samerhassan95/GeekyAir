@@ -13,7 +13,7 @@ const Item = sequelize.define("Item", {
   },
   description: DataTypes.TEXT,
   category: {
-    type: DataTypes.STRING,
+    type: DataTypes.ENUM("Food", "Beverages", "Other"),
     allowNull: false,
   },
   price: {

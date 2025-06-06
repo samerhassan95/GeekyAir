@@ -17,7 +17,7 @@ const authenticate = async (req, res, next) => {
 
 const authorizeRoles = (...allowedRoles) => {
   return (req, res, next) => {
-    const userRole = req.user?.role; // assuming you attach user to req after JWT auth
+    const userRole = req.user?.role;
     if (!allowedRoles.includes(userRole)) {
       return res.status(403).json({ error: "Forbidden: insufficient role" });
     }

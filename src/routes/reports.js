@@ -11,7 +11,7 @@ const {
 router.get(
   "/waiter-commission",
   authenticate,
-  authorizeRoles(["super_admin", "manager", "cashier", "waiter"]),
+  authorizeRoles("super_admin", "manager", "cashier", "waiter"),
   getWaiterCommissionReport
 );
 
